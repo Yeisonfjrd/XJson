@@ -4,7 +4,7 @@ import React from 'react'
 
 import { type Session, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
-import { Button } from '@nextui-org/button'
+import { Button } from '@nextui-org/react'
 
 export function AuthButton ({ session }: { session: Session | null }) {
   const supabase = createClientComponentClient()
