@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react';
 import { Card, CardHeader, CardBody, Avatar, CardFooter } from '@nextui-org/react'
 import Link from 'next/link'
 import { IconHeart, IconMessageCircle, IconRepeat } from '@tabler/icons-react'
@@ -36,13 +37,13 @@ export default function PostCard ({
       </CardBody>
       <CardFooter className="gap-3">
         <button>
-          <IconMessageCircle className='w-4 h-4' />
+        <IconMessageCircle className="w-4 h-4" /> as JSX.Element
         </button>
         <button>
-          <IconHeart className='w-4 h-4' />
+          <IconHeart className='w-4 h-4' /> as JSX.Element
         </button>
         <button>
-          <IconRepeat className='w-4 h-4' />
+          <IconRepeat className='w-4 h-4' /> as JSX.Element
         </button>
       </CardFooter>
     </Card>

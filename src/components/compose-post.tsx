@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react';
 import { ComposePostButton } from './compose-post-button'
 import { addPost } from '../actions/add-post-action'
 import { useRef } from 'react'

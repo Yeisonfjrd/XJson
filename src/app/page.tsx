@@ -1,18 +1,27 @@
+import React from 'react';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { AuthButtonServer } from '../components/auth-button-server'
 import { PostLists } from '../components/post-list'
 import { type Database } from '../types/database'
 import { ComposePost } from '../components/compose-post'
+import { Post } from '../types/posts'
+import { redirect } from 'next/navigation'
 
 export default async function Home () {
   const supabase = createServerComponentClient<Database>({ cookies })
   const { data: { session } } = await supabase.auth.getSession()
 
-  const { data: posts } = await supabase
-    .from('posts')
-    .select('*, user:users(name, avatar_url, user_name)')
-    .order('created_at', { ascending: false })
+  if (session === null) {
+    redirect('/login')
+  }
+
+const { data, error } = await supabase
+.from('posts')
+.select('*, user:users(name, avatar_url, user_name)')
+.order('created_at', { ascending: false })
+
+const posts = error ? null : data as unknown as Post[] | null
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
