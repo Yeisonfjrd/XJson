@@ -37,13 +37,13 @@ export default function PostCard ({
       </CardBody>
       <CardFooter className="gap-3">
         <button>
-        <IconMessageCircle className="w-4 h-4" /> as JSX.Element
+        <IconMessageCircle className="w-4 h-4" />
         </button>
         <button>
-          <IconHeart className='w-4 h-4' /> as JSX.Element
+          <IconHeart className='w-4 h-4' />
         </button>
         <button>
-          <IconRepeat className='w-4 h-4' /> as JSX.Element
+          <IconRepeat className='w-4 h-4' />
         </button>
       </CardFooter>
     </Card>
