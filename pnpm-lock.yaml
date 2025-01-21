@@ -8,21 +8,12 @@ importers:
 
   .:
     dependencies:
-      '@nextui-org/react':
-        specifier: ^2.6.11
-        version: 2.6.11(@types/react@19.0.7)(framer-motion@11.15.0(@emotion/is-prop-valid@1.3.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwindcss@3.4.17)
-      '@supabase/auth-helpers-nextjs':
-        specifier: ^0.10.0
-        version: 0.10.0(@supabase/supabase-js@2.32.0)
       '@supabase/supabase-js':
         specifier: 2.32.0
         version: 2.32.0
       '@tabler/icons-react':
         specifier: ^3.28.1
         version: 3.28.1(react@18.2.0)
-      '@types/node':
-        specifier: 20.5.0
-        version: 20.5.0
       '@types/react-dom':
         specifier: 18.2.7
         version: 18.2.7
@@ -60,9 +51,18 @@ importers:
         specifier: ^3.4.17
         version: 3.4.17
     devDependencies:
+      '@nextui-org/react':
+        specifier: ^2.6.11
+        version: 2.6.11(@types/react@19.0.7)(framer-motion@11.15.0(@emotion/is-prop-valid@1.3.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwindcss@3.4.17)
+      '@supabase/auth-helpers-nextjs':
+        specifier: ^0.10.0
+        version: 0.10.0(@supabase/supabase-js@2.32.0)
       '@types/jsonwebtoken':
         specifier: ^9.0.7
         version: 9.0.7
+      '@types/node':
+        specifier: ^22.10.7
+        version: 22.10.7
       '@types/prop-types':
         specifier: ^15.7.14
         version: 15.7.14
@@ -1418,8 +1418,8 @@ packages:
   '@types/lodash@4.17.13':
     resolution: {integrity: sha512-lfx+dftrEZcdBPczf9d0Qv0x+j/rfNCMuC6OcfXmO8gkfeNAY88PgKUbvG56whcN23gc27yenwF6oJZXGFpYxg==}
 
-  '@types/node@20.5.0':
-    resolution: {integrity: sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==}
+  '@types/node@22.10.7':
+    resolution: {integrity: sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==}
 
   '@types/phoenix@1.6.6':
     resolution: {integrity: sha512-PIzZZlEppgrpoT2QgbnDU+MMzuR6BbCjllj0bM70lWoejMeNJAxCchxnv7J3XFkI8MpygtRpzXrIlmWUBclP5A==}
@@ -3068,6 +3068,9 @@ packages:
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
     engines: {node: '>= 0.4'}
+
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
   update-browserslist-db@1.1.1:
     resolution: {integrity: sha512-R8UzCaa9Az+38REPiJ1tXlImTJXlVfgHZsglwBD/k6nj76ctsH1E3q4doGrukiLQd3sGQYu56r5+lo5r94l29A==}
@@ -5237,7 +5240,7 @@ snapshots:
 
   '@types/jsonwebtoken@9.0.7':
     dependencies:
-      '@types/node': 20.5.0
+      '@types/node': 22.10.7
 
   '@types/lodash.debounce@4.0.9':
     dependencies:
@@ -5245,7 +5248,9 @@ snapshots:
 
   '@types/lodash@4.17.13': {}
 
-  '@types/node@20.5.0': {}
+  '@types/node@22.10.7':
+    dependencies:
+      undici-types: 6.20.0
 
   '@types/phoenix@1.6.6': {}
 
@@ -5263,7 +5268,7 @@ snapshots:
 
   '@types/ws@8.5.13':
     dependencies:
-      '@types/node': 20.5.0
+      '@types/node': 22.10.7
 
   '@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@8.19.0(eslint@8.57.1)(typescript@5.1.6))(eslint@8.57.1)(typescript@5.1.6)':
     dependencies:
@@ -7238,6 +7243,8 @@ snapshots:
       has-bigints: 1.1.0
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
+
+  undici-types@6.20.0: {}
 
   update-browserslist-db@1.1.1(browserslist@4.24.3):
     dependencies:
