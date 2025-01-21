@@ -6,7 +6,6 @@ import { PostLists } from '../components/post-list'
 import { type Database } from '../types/database'
 import { ComposePost } from '../components/compose-post'
 import { Post } from '../types/posts'
-import { redirect } from 'next/navigation'
 
 export default async function Home () {
   // Pass the cookies function itself (not the result)

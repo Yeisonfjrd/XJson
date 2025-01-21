@@ -10,7 +10,7 @@ export function AuthButton({ session }: { session: Session | null }) {
   const router = useRouter()
 
   // Use environment variables to define the redirect URL dynamically
-  const redirectUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
+  const redirectUrl = process.env.NEXT_PUBLIC_URL + '/auth/callback'
 
   const handleSignIn = async () => {
     try {
