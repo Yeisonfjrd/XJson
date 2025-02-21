@@ -1,36 +1,168 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# XJson - Clon de Twitter (X)
 
-## Getting Started
+[![Project](https://github.com/user-attachments/assets/78cb93c5-a069-4fb2-b43e-568ef815806b)](x-json-kha7.vercel.app/)  
+*(Verifica este enlace. ¿Es correcto para *XJson* o debe ser otro?)*
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Diagrama de Arquitectura del Proyecto
+
+```mermaid
+graph LR
+    subgraph "Frontend Container"
+        direction TB
+        FrontendApp["Next.js App"]
+        style FrontendApp fill:#lightblue,stroke:#333,stroke-width:2px
+
+        subgraph "Frontend Components"
+            direction TB
+            AuthComponents["Auth Components"]
+            style AuthComponents fill:#skyblue,stroke:#333,stroke-width:2px
+            PostComponents["Post Components"]
+            style PostComponents fill:#skyblue,stroke:#333,stroke-width:2px
+
+            subgraph "Auth Components Details"
+                direction TB
+                AuthCallback["Auth Callback"]
+                style AuthCallback fill:#lightsteelblue,stroke:#333,stroke-width:2px
+            end
+
+            subgraph "Post Components Details"
+                direction TB
+                PostList["Post List\nReact Component"]
+                style PostList fill:#lightsteelblue,stroke:#333,stroke-width:2px
+                PostCard["Post Card\nReact Component"]
+                style PostCard fill:#lightsteelblue,stroke:#333,stroke-width:2px
+                ComposePost["Compose Post\nReact Component"]
+                style ComposePost fill:#lightsteelblue,stroke:#333,stroke-width:2px
+            end
+
+            AuthComponents -- Contains --> AuthCallback
+            PostComponents -- Contains --> PostList
+            PostComponents -- Contains --> PostCard
+            PostComponents -- Contains --> ComposePost
+        end
+        FrontendApp -- Renders --> FrontendComponents
+    end
+
+    subgraph "Backend Container"
+        direction TB
+        Authentication["Authentication"]
+        style Authentication fill:#lightgreen,stroke:#333,stroke-width:2px
+        DataLayer["Data Layer"]
+        style DataLayer fill:#lightgreen,stroke:#333,stroke-width:2px
+
+        subgraph "Authentication Details"
+            direction TB
+            ServerActions["Server Actions"]
+            style ServerActions fill:#palegreen,stroke:#333,stroke-width:2px
+            SupabaseAuth["Supabase Auth"]
+            style SupabaseAuth fill:#palegreen,stroke:#333,stroke-width:2px
+        end
+
+        subgraph "Data Layer Details"
+            direction TB
+            DatabaseClient["Database Client"]
+            style DatabaseClient fill:#plum,stroke:#333,stroke-width:2px
+            Manage["Manage"]
+            style Manage fill:#plum,stroke:#333,stroke-width:2px
+
+            subgraph "Database Tables"
+                direction TB
+                UsersTable["Users Table"]
+                style UsersTable fill:#violet,stroke:#333,stroke-width:2px
+                PostsTable["Posts Table"]
+                style PostsTable fill:#violet,stroke:#333,stroke-width:2px
+            end
+            DatabaseClient -- Contains --> DatabaseTables
+        end
+        Authentication -- InteractsWith --> DataLayer
+        Authentication -- Contains --> ServerActions
+        Authentication -- Contains --> SupabaseAuth
+    end
+
+    ExternalUser(External User)
+    style ExternalUser fill:#87cefa,stroke:#333,stroke-width:2px
+
+    ExternalUser -- Interacts with --> FrontendApp
+    FrontendApp -- Handles auth callback --> Authentication
+    FrontendApp -- Creates posts via --> Authentication
+
+    FrontendContainer --> BackendContainer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Descripción
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**XJson** es una réplica funcional de la red social Twitter (ahora X), construida con **Next.js** en el frontend y un backend robusto basado en **Supabase**. Este proyecto se centra en la creación de una experiencia de usuario similar a Twitter, implementando funcionalidades clave como:
 
-## Learn More
+- **Autenticación de Usuarios:** Registro e inicio de sesión seguros.
+- **Gestón de Sesiones:** Manejo eficiente de sesiones de usuario, incluyendo cierre de sesión.
+- **Interacción con Publicaciones:** Permite agregar comentarios a los posts.
+- **Base de Datos Funcional:** Almacena usuarios, posts y comentarios.
 
-To learn more about Next.js, take a look at the following resources:
+El objetivo es recrear la esencia de Twitter con un enfoque en la funcionalidad y experiencia del usuario.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔗 **[Demo en Vercel](https://x-json-kha7.vercel.app/)**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 Inicio Rápido
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1️⃣ Clonar el repositorio
+```bash
+git clone <URL_DEL_REPOSITORIO_XJSON>
+cd XJson
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2️⃣ Instalar dependencias
+```bash
+pnpm install  # o yarn install  o npm install
+```
+
+### 3️⃣ Configurar variables de entorno
+Crea un archivo `.env.local` en la raíz del proyecto y define las variables necesarias.
+
+Ejemplo:
+```ini
+NEXT_PUBLIC_SUPABASE_URL=tu_url_supabase
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key_supabase
+# ... otras variables de entorno necesarias ...
+```
+
+### 4️⃣ Ejecutar el servidor de desarrollo
+```bash
+pnpm dev  # o yarn dev  o npm run dev
+```
+
+### 5️⃣ Abrir la aplicación en el navegador
+Accede a **[http://localhost:3000](http://localhost:3000)**.
+
+---
+
+## 📂 Estructura del Proyecto
+
+```
+XJson/
+│── src/
+│   ├── app/
+│   │   ├── page.tsx  # Página principal
+│   │   ├── auth.tsx  # Autenticación
+│   ├── components/
+│   │   ├── AuthComponents.tsx
+│   │   ├── PostComponents.tsx
+│── public/
+│── styles/
+│── .env.local.example  # Ejemplo de configuración de variables de entorno
+│── README.md  # Este archivo 📄
+│── package.json
+│── tailwind.config.ts
+│── tsconfig.json
+```
+
+---
+
+## 📜 Licencia
+Este proyecto se encuentra bajo la licencia **MIT**. Puedes usarlo y modificarlo libremente. ✨
+
