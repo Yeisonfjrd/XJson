@@ -1,7 +1,6 @@
 # XJson - Clon de Twitter (X)
 
 [![Project](https://github.com/user-attachments/assets/993bebad-e316-4cd0-8da0-bb4e67548fe6)](x-json-kha7.vercel.app/)  
-*(Verifica este enlace. ¿Es correcto para *XJson* o debe ser otro?)*
 
 ---
 
